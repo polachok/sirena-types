@@ -1,0 +1,9 @@
+[package]
+name = "sirena-types"
+version = "0.1.0"
+authors = ["Alexander Polyakov <aleksandr.polyakov@kupibilet.ru>"]
+
+[dependencies]
+serde = "1"
+serde_derive = "1"
+encoding_rs = "0.7"
