@@ -1,6 +1,6 @@
 [package]
 name = "sirena-types"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Alexander Polyakov <aleksandr.polyakov@kupibilet.ru>"]
 description = "a set of types for representing aviation terms specificly for sirena"
 license = "MIT"

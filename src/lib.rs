@@ -91,6 +91,14 @@ gen_display!(AirlineCode);
 
 impl AirlineCode {
     gen_as!();
+
+    /// Reconstruct AirlineCode from AirlineCode.as_bytes()
+    pub unsafe fn from_bytes_unchecked(bytes: &[u8]) -> Self {
+        let mut mine = [0; 2];
+
+        mine.copy_from_slice(bytes);
+        AirlineCode(mine)
+    }
 }
 
 #[derive(Debug)]
@@ -155,6 +163,14 @@ gen_display!(AirportCode);
 
 impl AirportCode {
     gen_as!();
+
+    /// Reconstruct AirportCode from AirportCode.as_bytes()
+    pub unsafe fn from_bytes_unchecked(bytes: &[u8]) -> Self {
+        let mut mine = [0; 3];
+
+        mine.copy_from_slice(bytes);
+        AirportCode(mine)
+    }
 }
 
 #[derive(Debug)]
@@ -207,6 +223,14 @@ gen_display!(CityCode);
 
 impl CityCode {
     gen_as!();
+
+    /// Reconstruct CityCode from CityCode.as_bytes()
+    pub unsafe fn from_bytes_unchecked(bytes: &[u8]) -> Self {
+        let mut mine = [0; 3];
+
+        mine.copy_from_slice(bytes);
+        CityCode(mine)
+    }
 }
 
 #[derive(Debug)]
