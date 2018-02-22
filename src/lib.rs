@@ -48,6 +48,21 @@ pub enum AircraftCodeParseError {
     InvalidLetter(char),
 }
 
+impl fmt::Display for AircraftCodeParseError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            AircraftCodeParseError::InvalidLength(len) => write!(f, "invalid length {}, expected 3", len),
+            AircraftCodeParseError::InvalidLetter(c) => write!(f, "invalid character {}, expected [А-Я]", c),
+        }
+    }
+}
+
+impl std::error::Error for AircraftCodeParseError {
+    fn description(&self) -> &str {
+        "aircraft code parse error"
+    }
+}
+
 impl FromStr for AircraftCode {
     type Err = AircraftCodeParseError;
 
@@ -82,7 +97,24 @@ impl AirlineCode {
 pub enum AirlineCodeParseError {
     InvalidLength(usize),
     InvalidLetter(char),
-    TooManyDigits,
+    TooManyDigits(u32),
+}
+
+
+impl fmt::Display for AirlineCodeParseError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            AirlineCodeParseError::InvalidLength(len) => write!(f, "invalid length {}, expected 2", len),
+            AirlineCodeParseError::InvalidLetter(c) => write!(f, "invalid character {}, expected [А-Я]", c),
+            AirlineCodeParseError::TooManyDigits(digits) => write!(f, "got {} digits, only 1 allowed", digits),
+        }
+    }
+}
+
+impl std::error::Error for AirlineCodeParseError {
+    fn description(&self) -> &str {
+        "airline code parse error"
+    }
 }
 
 impl FromStr for AirlineCode {
@@ -106,7 +138,7 @@ impl FromStr for AirlineCode {
         // can't be 2 digits,
         // https://ru.wikipedia.org/wiki/Код_авиакомпании_ИАТА#Внутренняя_система_кодирования_в_бывшем_СССР
         if digits > 1 {
-            return Err(AirlineCodeParseError::TooManyDigits);
+            return Err(AirlineCodeParseError::TooManyDigits(digits));
         }
         let (koi8str, _, _) = KOI8_R.encode(value);
         let mut bytes = [0; 2];
@@ -129,7 +161,21 @@ impl AirportCode {
 pub enum AirportCodeParseError {
     InvalidLength(usize),
     InvalidLetter(char),
-    TooManyDigits,
+}
+
+impl fmt::Display for AirportCodeParseError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            AirportCodeParseError::InvalidLength(len) => write!(f, "invalid length {}, expected 3", len),
+            AirportCodeParseError::InvalidLetter(c) => write!(f, "invalid character {}, expected [А-Я]", c),
+        }
+    }
+}
+
+impl std::error::Error for AirportCodeParseError {
+    fn description(&self) -> &str {
+        "airport code parse error"
+    }
 }
 
 impl FromStr for AirportCode {
@@ -167,7 +213,21 @@ impl CityCode {
 pub enum CityCodeParseError {
     InvalidLength(usize),
     InvalidLetter(char),
-    TooManyDigits,
+}
+
+impl fmt::Display for CityCodeParseError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            CityCodeParseError::InvalidLength(len) => write!(f, "invalid length {}, expected 3", len),
+            CityCodeParseError::InvalidLetter(c) => write!(f, "invalid character {}, expected [А-Я]", c),
+        }
+    }
+}
+
+impl std::error::Error for CityCodeParseError {
+    fn description(&self) -> &str {
+        "city code parse error"
+    }
 }
 
 impl FromStr for CityCode {
