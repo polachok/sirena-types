@@ -2,6 +2,11 @@
 name = "sirena-types"
 version = "0.1.0"
 authors = ["Alexander Polyakov <aleksandr.polyakov@kupibilet.ru>"]
+description = "a set of types for representing aviation terms specificly for sirena"
+license = "MIT"
+documentation = "https://docs.rs/sirena-types"
+repository = "https://github.com/polachok/sirena-types"
+homepage = "https://github.com/polachok/sirena-types"
 
 [dependencies]
 serde = "1"
