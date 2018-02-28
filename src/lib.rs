@@ -34,7 +34,7 @@ macro_rules! gen_as {
     }
 }
 
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone, Copy)]
 pub struct AircraftCode([u8; 3]);
 
 gen_display!(AircraftCode);
@@ -84,7 +84,7 @@ impl FromStr for AircraftCode {
     }
 }
 
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone, Copy)]
 pub struct AirlineCode([u8; 2]);
 
 gen_display!(AirlineCode);
@@ -156,7 +156,7 @@ impl FromStr for AirlineCode {
 }
 
 /// 3 letter airport code
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone, Copy)]
 pub struct AirportCode([u8; 3]);
 
 gen_display!(AirportCode);
@@ -216,7 +216,7 @@ impl FromStr for AirportCode {
 }
 
 /// 3 letter airport code
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Serialize, Deserialize, Hash, Clone, Copy)]
 pub struct CityCode([u8; 3]);
 
 gen_display!(CityCode);
